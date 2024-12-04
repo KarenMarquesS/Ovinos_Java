@@ -94,7 +94,7 @@ public class ManejoRepositorio implements RepositorioBase<T_Manejo>{
                     String nome_medicamento = rs.getString("nome_medicamento");
 
                     manejo = Optional.of(new T_Manejo (data_manejo, grau_famacha, vermifugo_oral, vermifugo_muscular,
-                        vermifugo_venoso, presenca_bicheira, nome_medicamento));
+                        vermifugo_venoso,  presenca_bicheira, nome_medicamento));
                 }
             }
 
