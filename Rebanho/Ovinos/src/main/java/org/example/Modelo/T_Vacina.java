@@ -31,6 +31,12 @@ public class T_Vacina extends EntidadeBase{
         this.nome_vacina = nome_vacina;
     }
 
+    public T_Vacina(int n_brinco, Date data_vacina, String nome_vacina) {
+        this.n_brinco = n_brinco;
+        this.data_vacina = data_vacina;
+        this.nome_vacina = nome_vacina;
+    }
+
     @Override
     public int getId_cordeiro() {
         return id_cordeiro;

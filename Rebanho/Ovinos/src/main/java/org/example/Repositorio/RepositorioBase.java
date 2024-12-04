@@ -4,11 +4,13 @@ package org.example.Repositorio;
 import org.example.Modelo.EntidadeBase;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RepositorioBase <T extends EntidadeBase>{
 
    void Adicionar (T entidade);
    void UpDate(T entidade);
-   void Delete ( int id);
+   Optional<T> GetByBrinco(int n_brinco);
+   void Delete ( int n_brinco);
 
 }
