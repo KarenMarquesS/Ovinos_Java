@@ -50,6 +50,18 @@ public class T_Manejo extends EntidadeBase{
         this.nome_medicamento = nome_medicamento;
     }
 
+      public T_Manejo(Date data_manejo, int grau_famacha, String vermifugo_oral, String vermifugo_muscular, String vermifugo_venoso, String nome_vermifugo, String presenca_bicheira, String nome_medicamento) {
+        this.data_manejo = data_manejo;
+        this.grau_famacha = grau_famacha;
+        this.vermifugo_oral = vermifugo_oral;
+        this.vermifugo_muscular = vermifugo_muscular;
+        this.vermifugo_venoso = vermifugo_venoso;
+        this.nome_vermifugo = nome_vermifugo;
+        this.presenca_bicheira = presenca_bicheira;
+        this.nome_medicamento = nome_medicamento;
+    }
+    
+    
     @Override
     public int getId_cordeiro() {
         return id_cordeiro;
