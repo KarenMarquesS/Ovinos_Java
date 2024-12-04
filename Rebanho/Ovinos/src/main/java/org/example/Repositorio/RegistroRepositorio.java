@@ -5,6 +5,8 @@ import org.example.Modelo.T_Registro;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Optional;
 
 
 public class RegistroRepositorio implements RepositorioBase<T_Registro>  {
@@ -23,30 +25,57 @@ public class RegistroRepositorio implements RepositorioBase<T_Registro>  {
             stmt.setDate(3, new java.sql.Date(registro.getData_Nascimento().getTime()));
             stmt.setDouble(4, registro.getPeso_Nascimento());
             stmt.setString(5, registro.getRaca());
-        } catch(Exception e){
+
+            stmt.close();
+            conn.close();
+
+        } catch(SQLException e){
             e.printStackTrace();
         }
-
-
     }
+
 
     @Override
     public void UpDate(T_Registro registro) {
 
+        try{
+            Connection conn = ConexaoBancoDados.getConnection();
+            String query = "UPDATE T_Peso SET mae_brinco=?, data_nascimento=?, peso_nascimento=?, raca=?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.setInt(1, registro.getMae_brinco());
+            stmt.setDate(2, new java.sql.Date (registro.getData_Nascimento().getTime()));
+            stmt.setString(3, registro.getRaca());
+            stmt.executeUpdate();
+
+            conn.close();
+            stmt.close();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void Delete(int id) {
+    public Optional<T_Registro> GetByBrinco(int n_brinco) {
+        return Optional.empty();
+    }
+
+
+    @Override
+    public void Delete(int n_brinco) {
         try{
             Connection conn = ConexaoBancoDados.getConnection();
-            String query = "DELTE FROM T_Registro WHERE id=? ";
+            String query = "DELTE FROM T_Registro WHERE n_brinco=? ";
             PreparedStatement stmt = conn.prepareStatement(query);
 
-            stmt.setInt(1, id);
-        } catch(Exception e){
+            stmt.setInt(1, n_brinco);
+
+            stmt.close();
+
+        } catch(SQLException e){
             e.printStackTrace();
         }
-
     }
 
 }
