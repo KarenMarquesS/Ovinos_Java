@@ -9,6 +9,7 @@ public interface RepositorioBase <T extends EntidadeBase>{
 
    void Adicionar (T entidade);
    void UpDate(T entidade);
-   void Delete ( int id);
+   Optional<T> GetByBrinco(int n_brinco);
+   void Delete ( int n_brinco);
 
 }
